@@ -1,0 +1,259 @@
+/* pages/profile/profile.wxss */
+.container {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+/* 登录页样式 */
+.login-container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.1;
+}
+
+.login-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx;
+}
+
+.login-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.login-desc {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 60rpx;
+}
+
+.login-btn {
+  width: 600rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #1aad19;
+  color: #fff;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(26, 173, 25, 0.2);
+}
+
+/* 用户信息卡片 */
+.user-card {
+  margin: 20rpx;
+  padding: 30rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  margin-right: 24rpx;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.nickname {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.join-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.logout-btn {
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  font-size: 24rpx;
+  color: #999;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.logout-btn::after {
+  display: none;
+}
+
+/* 数据统计区域 */
+.stats-section {
+  margin: 20rpx;
+  padding: 30rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.stats-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stats-num {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.stats-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 收藏列表区域 */
+.favorites-section {
+  margin: 20rpx;
+  padding: 30rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-more {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.empty-state {
+  padding: 60rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-state image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-state text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.relics-item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.relics-item:last-child {
+  border-bottom: none;
+}
+
+.relics-info {
+  flex: 1;
+}
+
+.relics-name {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.relics-location {
+  font-size: 24rpx;
+  color: #999;
+  display: block;
+}
+
+.relics-era {
+  font-size: 24rpx;
+  color: #1aad19;
+  background: #f0f9eb;
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+}
+
+/* 在现有样式后添加 */
+.visit-history {
+  margin: 20rpx;
+  padding: 30rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.visit-time {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 4rpx;
+  display: block;
+}
+
+.history-list {
+  margin-top: 20rpx;
+}
+
+/* 浏览记录样式优化 */
+.history-list .relics-item {
+  padding: 24rpx 0;
+}
+
+.relics-meta {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.relics-location {
+  margin-right: 20rpx;
+}
+
+.visit-time {
+  color: #666;
+}

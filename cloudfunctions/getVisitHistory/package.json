@@ -1,0 +1,9 @@
+{
+  "name": "getVisitHistory",
+  "version": "1.0.0",
+  "description": "获取浏览记录",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+} 

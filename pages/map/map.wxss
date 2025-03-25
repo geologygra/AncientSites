@@ -1,0 +1,213 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* 筛选切换按钮 */
+.filter-toggle {
+  position: fixed;
+  top: 20rpx;
+  left: 20rpx;
+  right: 20rpx;
+  z-index: 100;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.toggle-icon {
+  width: 0;
+  height: 0;
+  border-left: 10rpx solid transparent;
+  border-right: 10rpx solid transparent;
+  border-top: 10rpx solid #666;
+  transition: transform 0.3s;
+}
+
+.toggle-icon.up {
+  transform: rotate(180deg);
+}
+
+/* 筛选区域 */
+.filter-section {
+  position: fixed;
+  top: 100rpx;
+  left: 20rpx;
+  right: 20rpx;
+  z-index: 99;
+  background: #fff;
+  border-radius: 8rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-out;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.filter-section.show {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.filter-content {
+  padding: 20rpx;
+}
+
+/* 其他筛选样式保持不变 */
+.filter-group {
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.filter-group:last-child {
+  border-bottom: none;
+}
+
+.filter-label {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -8rpx;
+}
+
+.filter-option {
+  margin: 8rpx;
+  padding: 12rpx 24rpx;
+  font-size: 26rpx;
+  color: #666;
+  background: #f5f5f5;
+  border-radius: 26rpx;
+}
+
+.filter-option.selected {
+  color: #1aad19;
+  background: #e6f3ff;
+}
+
+/* 地图容器样式 */
+map {
+  width: 100%;
+  flex: 1;
+  height: 0; /* 配合 flex: 1 使用 */
+}
+
+/* 地图控制器样式 */
+.map-controls {
+  position: fixed;
+  right: 30rpx;
+  bottom: 60rpx;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.control-btn {
+  width: 80rpx;
+  height: 80rpx;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.control-text {
+  font-size: 40rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+/* 遗址信息卡片样式 */
+.site-info {
+  position: fixed;
+  left: 20rpx;
+  right: 20rpx;
+  bottom: -100%;
+  background: #fff;
+  border-radius: 16rpx 16rpx 0 0;
+  padding: 30rpx;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.1);
+  transition: bottom 0.3s ease-out;
+  z-index: 101;
+}
+
+.site-info.show {
+  bottom: 0;
+}
+
+.info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.site-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.close-btn {
+  font-size: 40rpx;
+  color: #999;
+  padding: 10rpx;
+}
+
+.info-content {
+  margin-bottom: 30rpx;
+}
+
+.info-item {
+  margin-bottom: 16rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.info-item .label {
+  color: #999;
+  margin-right: 10rpx;
+}
+
+.info-actions {
+  text-align: center;
+}
+
+.detail-btn {
+  background: #1aad19;
+  color: #fff;
+  font-size: 28rpx;
+  padding: 16rpx 60rpx;
+  border-radius: 32rpx;
+  display: inline-block;
+}
+
+/* 地图标记样式 */
+.marker-icon {
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+}
+
+/* 选中状态的标记样式 */
+.marker-selected {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+} 

@@ -1,0 +1,460 @@
+.container {
+  padding: 20rpx;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 搜索栏样式优化 */
+.search-bar {
+  position: relative;
+  padding: 20rpx 30rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  margin: 20rpx 20rpx 30rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.search-bar input {
+  height: 72rpx;
+  padding: 0 20rpx 0 70rpx;
+  font-size: 30rpx;
+  background: #f5f5f5;
+  border-radius: 36rpx;
+}
+
+.search-icon {
+  position: absolute;
+  left: 50rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36rpx;
+  height: 36rpx;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+/* 搜索框placeholder样式 */
+.search-bar input::placeholder {
+  color: #999;
+}
+
+/* 筛选切换按钮 */
+.filter-toggle {
+  position: relative;
+  margin: 20rpx;
+  padding: 12rpx 30rpx;
+  background: #fff;
+  border-radius: 32rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.toggle-icon {
+  width: 0;
+  height: 0;
+  border-left: 10rpx solid transparent;
+  border-right: 10rpx solid transparent;
+  border-top: 10rpx solid #666;
+  margin-left: 10rpx;
+  transition: transform 0.3s;
+}
+
+.toggle-icon.up {
+  transform: rotate(180deg);
+}
+
+/* 筛选区域样式 */
+.filter-section {
+  margin: 0 20rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.05);
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transition: all 0.3s ease-out;
+  visibility: hidden;
+  margin-bottom: 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.filter-section.show {
+  height: auto;
+  opacity: 1;
+  margin-bottom: 20rpx;
+  visibility: visible;
+}
+
+.filter-content {
+  padding: 20rpx;
+}
+
+.filter-header {
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.filter-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.filter-group {
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.filter-group:last-child {
+  border-bottom: none;
+}
+
+.filter-label {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -8rpx;
+  padding-bottom: 8rpx;
+  max-height: 320rpx;
+  overflow-y: auto;
+}
+
+.filter-option {
+  margin: 8rpx;
+  padding: 12rpx 24rpx;
+  font-size: 26rpx;
+  color: #666;
+  background: #f5f5f5;
+  border-radius: 26rpx;
+  white-space: nowrap;
+}
+
+.filter-option.selected {
+  color: #1aad19;
+  background: #e6f3ff;
+}
+
+/* 地区选择弹窗 */
+.region-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.popup-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.popup-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.popup-header {
+  padding: 30rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-bottom: 1rpx solid #eee;
+  position: relative;
+}
+
+.popup-close {
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 36rpx;
+  color: #999;
+}
+
+.region-list {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.region-item {
+  width: calc(33.33% - 20rpx);
+  margin: 10rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  color: #666;
+  position: relative;
+}
+
+.region-item.selected {
+  background: #e6f3ff;
+  color: #1aad19;
+}
+
+.check-icon {
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+}
+
+.popup-footer {
+  padding: 20rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1rpx solid #eee;
+}
+
+.btn-reset, .btn-confirm {
+  width: 300rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+}
+
+.btn-reset {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.btn-confirm {
+  background: #1aad19;
+  color: #fff;
+}
+
+/* 遗址列表样式 */
+.relics-list {
+  margin-top: 20rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.relics-item {
+  padding: 30rpx 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.relics-item:last-child {
+  border-bottom: none;
+}
+
+.relics-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.relics-info {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.8;
+}
+
+.relics-info text {
+  margin-right: 30rpx;
+}
+
+/* 添加位置独立一行的样式 */
+.relics-info .location {
+  flex: 100%;
+  margin-bottom: 8rpx;
+}
+
+/* 年代和类型并排显示 */
+.relics-info .era,
+.relics-info .type {
+  flex: none;
+}
+
+/* 保护级别样式 */
+.protection-level {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+}
+
+.protection-level text {
+  display: inline-block;
+  padding: 4rpx 12rpx;
+  background: #f0f9eb;
+  color: #67c23a;
+  border-radius: 4rpx;
+}
+
+/* 分页控制器样式 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30rpx 0;
+  background: #fff;
+  margin: 20rpx;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.page-btn {
+  padding: 12rpx 30rpx;
+  font-size: 28rpx;
+  color: #fff;
+  background: #1aad19;
+  border-radius: 32rpx;
+  margin: 0 20rpx;
+}
+
+.page-btn.disabled {
+  background: #ccc;
+  opacity: 0.6;
+}
+
+.page-info {
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 信息提示栏样式 */
+.info-banner {
+  margin: 0 20rpx 20rpx;
+  padding: 16rpx 24rpx;
+  background: rgba(255, 241, 240, 0.8);
+  border-radius: 12rpx;
+  border: 2rpx solid #ffccc7;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-content {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+.info-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 12rpx;
+  flex-shrink: 0;
+  margin-top: 4rpx;
+}
+
+.info-text {
+  font-size: 26rpx;
+  color: #ff4d4f;
+  font-weight: 500;
+  text-align: left;
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* 闪光动画效果 */
+.sparkle {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  animation: sparkleMove 3s infinite;
+}
+
+@keyframes sparkleMove {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+.view-switch {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.view-switch button {
+  padding: 8px 16px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.map-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.list-view {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+/* 删除视图切换相关样式，添加地图样式 */
+map {
+  margin: 20rpx;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 修改地图容器样式 */
+.map-preview {
+  width: 100%;
+  height: 400rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+map {
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+} 

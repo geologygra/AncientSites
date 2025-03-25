@@ -1,0 +1,94 @@
+<view class="container">
+  <block wx:if="{{!loading}}">
+    <view class="basic-info">
+      <view class="title">{{relicsInfo.name}}</view>
+      <view class="info-item">
+        <image class="icon" src="/images/icons/location.png"></image>
+        <text class="label">位置：</text>
+        <text>{{relicsInfo.location}}</text>
+      </view>
+      <view class="info-item">
+        <image class="icon" src="/images/icons/time.png"></image>
+        <text class="label">年代：</text>
+        <text>{{relicsInfo.era}}</text>
+      </view>
+      <view class="info-item">
+        <image class="icon" src="/images/icons/type.png"></image>
+        <text class="label">类型：</text>
+        <text>{{relicsInfo.type}}</text>
+      </view>
+      <view class="info-item">
+        <image class="icon" src="/images/icons/protection.png"></image>
+        <text class="label">保护级别：</text>
+        <text>{{relicsInfo.protectionLevel}}</text>
+      </view>
+    </view>
+
+    <view class="description">
+      <view class="section-title">历史介绍</view>
+      <text class="description-text">{{relicsInfo.description}}</text>
+    </view>
+
+    <!-- 地图区域 -->
+    <view class="map-section">
+      <view class="section-title">地理位置</view>
+      <map
+        class="location-map"
+        latitude="{{relicsInfo.coordinates.latitude}}"
+        longitude="{{relicsInfo.coordinates.longitude}}"
+        markers="{{markers}}"
+        scale="{{mapScale}}"
+        show-location
+        enable-zoom="{{true}}"
+        enable-scroll="{{true}}"
+      >
+        <view class="map-controls">
+          <view class="control-btn" bindtap="zoomIn">+</view>
+          <view class="control-btn" bindtap="zoomOut">-</view>
+        </view>
+      </map>
+    </view>
+
+    <!-- 相关遗址推荐 -->
+    <view class="related-sites" wx:if="{{relatedSites.length > 0}}">
+      <view class="section-title">相关遗址</view>
+      <view class="related-list">
+        <view class="related-item" 
+              wx:for="{{relatedSites}}" 
+              wx:key="id"
+              bindtap="goToRelatedSite"
+              data-id="{{item.id}}">
+          <text class="site-name">{{item.name}}</text>
+          <text class="site-era">{{item.era}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 收藏按钮 -->
+    <view class="action-bar">
+      <button 
+        class="favorite-btn {{isFavorite ? 'active' : ''}}" 
+        hover-class="none"
+        bindtap="handleFavorite">
+        <image 
+          class="btn-icon" 
+          src="{{isFavorite ? '/images/icons/star-filled.png' : '/images/icons/star.png'}}"
+          mode="aspectFit"
+        />
+        <text>{{isFavorite ? '已收藏' : '收藏遗址'}}</text>
+      </button>
+      <button 
+        class="share-btn" 
+        hover-class="none"
+        open-type="share">
+        <image 
+          class="btn-icon" 
+          src="/images/icons/share.png"
+          mode="aspectFit"
+        />
+        <text>分享</text>
+      </button>
+    </view>
+  </block>
+  <view wx:else class="loading">加载中...</view>
+</view> 

@@ -1,0 +1,134 @@
+<view class="container">
+  <!-- 筛选切换按钮 -->
+  <view class="filter-toggle" bindtap="toggleFilter">
+    <text>{{showFilter ? '收起筛选' : '展开筛选'}}</text>
+    <view class="toggle-icon {{showFilter ? 'up' : ''}}"></view>
+  </view>
+
+  <!-- 筛选区域 -->
+  <view class="filter-section {{showFilter ? 'show' : ''}}">
+    <!-- 地区筛选 -->
+    <view class="filter-group">
+      <view class="filter-label">地区</view>
+      <view class="filter-options">
+        <view class="filter-option {{selectedRegion === region ? 'selected' : ''}}"
+              wx:for="{{regions}}" 
+              wx:key="*this"
+              wx:for-item="region"
+              data-type="Region"
+              data-value="{{region}}"
+              bindtap="handleFilterChange">
+          {{region}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 年代筛选 -->
+    <view class="filter-group">
+      <view class="filter-label">年代</view>
+      <view class="filter-options">
+        <view class="filter-option {{selectedEra === era ? 'selected' : ''}}"
+              wx:for="{{eras}}" 
+              wx:key="*this"
+              wx:for-item="era"
+              data-type="Era"
+              data-value="{{era}}"
+              bindtap="handleFilterChange">
+          {{era}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 类型筛选 -->
+    <view class="filter-group">
+      <view class="filter-label">类型</view>
+      <view class="filter-options">
+        <view class="filter-option {{selectedType === type ? 'selected' : ''}}"
+              wx:for="{{types}}" 
+              wx:key="*this"
+              wx:for-item="type"
+              data-type="Type"
+              data-value="{{type}}"
+              bindtap="handleFilterChange">
+          {{type}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 保护级别筛选 -->
+    <view class="filter-group">
+      <view class="filter-label">保护级别</view>
+      <view class="filter-options">
+        <view class="filter-option {{selectedProtectionLevel === level ? 'selected' : ''}}"
+              wx:for="{{protectionLevels}}" 
+              wx:key="*this"
+              wx:for-item="level"
+              data-type="ProtectionLevel"
+              data-value="{{level}}"
+              bindtap="handleFilterChange">
+          {{level}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 重置按钮 -->
+    <view class="filter-group">
+      <button class="btn-reset" bindtap="resetFilters">重置</button>
+    </view>
+  </view>
+
+  <!-- 地图组件 -->
+  <map
+    id="map"
+    longitude="{{longitude}}"
+    latitude="{{latitude}}"
+    scale="{{scale}}"
+    markers="{{visibleMarkers}}"
+    show-location
+    bindmarkertap="markertap"
+    bindlabeltap="labeltap"
+    bindregionchange="regionchange"
+    bindtap="mapTap"
+    style="width: 100%; height: 100vh;">
+  </map>
+
+  <!-- 加载提示 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 遗址信息卡片 -->
+  <view class="site-info {{showSiteInfo ? 'show' : ''}}" wx:if="{{selectedMarker}}">
+    <view class="info-header">
+      <text class="site-name">{{selectedMarker.title}}</text>
+      <view class="close-btn" bindtap="closeSiteInfo">×</view>
+    </view>
+    <view class="info-content">
+      <view class="info-item">
+        <text class="label">位置：</text>
+        <text>{{selectedMarker.location}}</text>
+      </view>
+      <view class="info-item">
+        <text class="label">年代：</text>
+        <text>{{selectedMarker.era}}</text>
+      </view>
+      <view class="info-item">
+        <text class="label">类型：</text>
+        <text>{{selectedMarker.type}}</text>
+      </view>
+    </view>
+    <view class="info-actions">
+      <button class="detail-btn" bindtap="goToDetail">查看详情</button>
+    </view>
+  </view>
+
+  <!-- 地图控制器 -->
+  <view class="map-controls">
+    <view class="control-btn" bindtap="zoomIn">
+      <text class="control-text">+</text>
+    </view>
+    <view class="control-btn" bindtap="zoomOut">
+      <text class="control-text">-</text>
+    </view>
+  </view>
+</view> 

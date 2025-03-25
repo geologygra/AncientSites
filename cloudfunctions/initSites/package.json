@@ -1,0 +1,9 @@
+{
+  "name": "initSites",
+  "version": "1.0.0",
+  "description": "初始化遗址数据",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+} 

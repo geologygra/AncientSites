@@ -1,0 +1,111 @@
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <image class="search-icon" src="/images/icons/search.png"></image>
+    <input type="text" 
+           placeholder="搜索遗址名称、位置、年代、类型" 
+           confirm-type="search"
+           value="{{searchKeyword}}"
+           bindinput="handleSearchInput"
+           bindconfirm="handleSearch"/>
+  </view>
+
+  <!-- 新增信息提示栏 -->
+  <view class="info-banner">
+    <view class="info-content">
+      <image class="info-icon" src="/images/icons/new.png"></image>
+      <text class="info-text">更新信息：2024年2月22日更新了更多省份的文物遗址数据</text>
+      <view class="sparkle"></view>
+    </view>
+  </view>
+
+  <!-- 筛选切换按钮 -->
+  <view class="filter-toggle" bindtap="toggleFilter">
+    <text>筛选</text>
+    <view class="toggle-icon {{showFilter ? 'up' : ''}}"></view>
+  </view>
+
+  <!-- 筛选区域 -->
+  <view class="filter-section {{showFilter ? 'show' : ''}}">
+    <!-- 地区筛选 -->
+    <view class="filter-group">
+      <view class="filter-label">地区</view>
+      <view class="filter-options">
+        <view class="filter-option {{selectedRegion === region ? 'selected' : ''}}"
+              wx:for="{{regions}}" 
+              wx:key="*this"
+              wx:for-item="region"
+              data-type="Region"
+              data-value="{{region}}"
+              bindtap="handleFilterChange">
+          {{region}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 年代筛选 -->
+    <view class="filter-group">
+      <view class="filter-label">年代</view>
+      <view class="filter-options">
+        <view class="filter-option {{selectedEra === era ? 'selected' : ''}}"
+              wx:for="{{eras}}" 
+              wx:key="*this"
+              wx:for-item="era"
+              data-type="Era"
+              data-value="{{era}}"
+              bindtap="handleFilterChange">
+          {{era}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 类型筛选 -->
+    <view class="filter-group">
+      <view class="filter-label">类型</view>
+      <view class="filter-options">
+        <view class="filter-option {{selectedType === type ? 'selected' : ''}}"
+              wx:for="{{types}}" 
+              wx:key="*this"
+              wx:for-item="type"
+              data-type="Type"
+              data-value="{{type}}"
+              bindtap="handleFilterChange">
+          {{type}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 重置按钮 -->
+    <view class="filter-group">
+      <button class="btn-reset" bindtap="resetFilters">重置</button>
+    </view>
+  </view>
+
+  <!-- 遗址列表部分 -->
+  <view class="relics-list">
+    <view class="relics-item" 
+          wx:for="{{sites}}"
+          wx:key="id"
+          bindtap="goToDetail"
+          data-id="{{item.id}}">
+      <view class="relics-name">{{item.name}}</view>
+      <view class="relics-info">
+        <text class="location">{{item.location}}</text>
+        <text class="era">{{item.era}}</text>
+        <text class="type">{{item.type}}</text>
+      </view>
+      <view class="protection-level">
+        <text>{{item.protectionLevel}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分页控制器 -->
+  <view class="pagination" wx:if="{{totalPages > 0}}">
+    <view class="page-btn {{currentPage <= 1 ? 'disabled' : ''}}" 
+          bindtap="prevPage">上一页</view>
+    <view class="page-info">{{currentPage}}/{{totalPages}}</view>
+    <view class="page-btn {{currentPage >= totalPages ? 'disabled' : ''}}" 
+          bindtap="nextPage">下一页</view>
+  </view>
+</view> 

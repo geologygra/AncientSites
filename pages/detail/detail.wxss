@@ -1,0 +1,242 @@
+.container {
+  padding: 20rpx;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
+}
+
+/* 基本信息区域 */
+.basic-info {
+  background: #fff;
+  padding: 30rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 24rpx;
+  padding-left: 20rpx;
+  border-left: 8rpx solid #1aad19;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.info-item .icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 12rpx;
+  flex-shrink: 0;
+}
+
+.info-item .label {
+  color: #999;
+  margin-right: 20rpx;
+}
+
+/* 历史介绍区域 */
+.description {
+  background: #fff;
+  padding: 30rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.section-title::before {
+  content: '';
+  display: inline-block;
+  width: 8rpx;
+  height: 32rpx;
+  background: #1aad19;
+  margin-right: 16rpx;
+  border-radius: 4rpx;
+}
+
+.description text {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+  display: block;
+}
+
+/* 地图区域 */
+.map-section {
+  background: #fff;
+  padding: 30rpx;
+  border-radius: 12rpx;
+  margin: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.05);
+}
+
+/* 地图容器 */
+.location-map {
+  width: 100%;
+  height: 400rpx;  /* 调整地图高度 */
+  border-radius: 8rpx;
+  overflow: hidden;
+  margin-top: 20rpx;
+  position: relative;  /* 为控制按钮定位 */
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+/* 地图控制按钮 */
+.map-controls {
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 2rpx;
+  z-index: 1;
+}
+
+.control-btn {
+  width: 60rpx;
+  height: 60rpx;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: #333;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+/* 第一个按钮圆角 */
+.control-btn:first-child {
+  border-radius: 4rpx 4rpx 0 0;
+}
+
+/* 最后一个按钮圆角 */
+.control-btn:last-child {
+  border-radius: 0 0 4rpx 4rpx;
+}
+
+/* 按钮点击效果 */
+.control-btn:active {
+  opacity: 0.8;
+  transform: scale(0.95);
+}
+
+/* 修改收藏按钮样式为底部悬浮 */
+.action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -2rpx 10rpx rgba(0,0,0,0.05);
+  z-index: 100;
+}
+
+.favorite-btn, .share-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+.favorite-btn::after, .share-btn::after {
+  display: none;
+}
+
+.btn-icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-bottom: 8rpx;
+}
+
+.favorite-btn text, .share-btn text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.favorite-btn.active text {
+  color: #1aad19;
+}
+
+.description-text {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #333;
+  text-align: justify;
+}
+
+.related-sites {
+  background: #fff;
+  padding: 30rpx;
+  margin: 20rpx;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+}
+
+.related-list {
+  margin-top: 20rpx;
+}
+
+.related-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.related-item:last-child {
+  border-bottom: none;
+}
+
+.site-name {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.site-era {
+  font-size: 24rpx;
+  color: #666;
+  background: #f5f5f5;
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #999;
+  font-size: 28rpx;
+} 

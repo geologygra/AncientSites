@@ -1,0 +1,85 @@
+<view class="container">
+  <!-- 未登录状态 -->
+  <view class="login-container" wx:if="{{!userInfo}}">
+    <image class="login-bg" src="/images/login-bg.png" mode="aspectFill"></image>
+    <view class="login-content">
+      <text class="login-title">欢迎使用遗址信息展示</text>
+      <text class="login-desc">登录后可以收藏感兴趣的遗址</text>
+      <button class="login-btn" bindtap="handleLogin">微信登录</button>
+    </view>
+  </view>
+
+  <!-- 已登录状态 -->
+  <view class="user-container" wx:else>
+    <!-- 用户信息卡片 -->
+    <view class="user-card">
+      <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+      <view class="user-info">
+        <text class="nickname">{{userInfo.nickName}}</text>
+        <text class="join-time">加入时间：{{joinTime}}</text>
+      </view>
+      <button class="logout-btn" bindtap="handleLogout">退出登录</button>
+    </view>
+    
+    <!-- 用户数据统计 -->
+    <view class="stats-section">
+      <view class="stats-item">
+        <text class="stats-num">{{favorites.length}}</text>
+        <text class="stats-label">收藏遗址</text>
+      </view>
+      <view class="stats-item">
+        <text class="stats-num">{{visitCount || 0}}</text>
+        <text class="stats-label">浏览记录</text>
+      </view>
+    </view>
+    
+    <!-- 收藏列表 -->
+    <view class="favorites-section">
+      <view class="section-header">
+        <text class="section-title">我的收藏</text>
+        <text class="section-more" wx:if="{{favorites.length > 0}}">查看全部 ></text>
+      </view>
+      <view class="empty-state" wx:if="{{!favorites.length}}">
+        <image src="/images/empty.png" mode="aspectFit"></image>
+        <text>暂无收藏遗址</text>
+      </view>
+      <view class="favorites-list" wx:else>
+        <view class="relics-item" 
+              wx:for="{{favorites}}" 
+              wx:key="id"
+              bindtap="goToDetail"
+              data-id="{{item.id}}">
+          <view class="relics-info">
+            <text class="relics-name">{{item.name}}</text>
+            <text class="relics-location">{{item.location}}</text>
+          </view>
+          <view class="relics-era">{{item.era}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 浏览记录 -->
+    <view class="visit-history" wx:if="{{userInfo}}">
+      <view class="section-header">
+        <text class="section-title">最近浏览</text>
+      </view>
+      <view class="empty-state" wx:if="{{!visitHistory.length}}">
+        <image src="/images/empty.png" mode="aspectFit"></image>
+        <text>暂无浏览记录</text>
+      </view>
+      <view class="history-list" wx:else>
+        <view class="relics-item" 
+              wx:for="{{visitHistory}}" 
+              wx:key="id"
+              bindtap="goToDetail"
+              data-id="{{item.id}}">
+          <view class="relics-info">
+            <text class="relics-name">{{item.name}}</text>
+            <text class="relics-location">{{item.location}}</text>
+          </view>
+          <view class="relics-era">{{item.era}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> 
